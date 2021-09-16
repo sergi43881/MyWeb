@@ -1,0 +1,138 @@
+@font-face {
+    font-family: futurista;
+    src: url('../fonts/ZenDots.ttf')
+}
+body {
+    background-color: #151616;
+    font-family: arial;
+    font-size: 12px;
+}
+.cabecera {
+    height: 10px;
+}
+
+/* logo */
+.imglogo {
+    width: 230px;
+    height: 60px;
+    margin-left: 50px;
+    margin-top: 8px;
+}
+
+/* menu */
+.menu {
+    height: 50px;
+    width: 650px;
+    margin: 0px 6px 15px 600px;
+    overflow: hidden;
+}
+
+/* slide */
+.slide {
+    height: 250px;
+    margin-top: 3px;
+}
+
+/* Temas */
+.temas {
+    height: 250px;
+    width: 100%;
+    margin-top: 3px;
+}
+.tema1 {
+    width: 49.7%;
+    height: 100%;
+    display: inline-block;
+}
+.tema2 {
+    width: 49.7%;
+    height: 100%;
+    display: inline-block;
+}
+.textotema {
+    color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.imagentema {
+    border-radius: 1em/1em;
+    display: block;
+    margin: auto;
+}
+
+/* Estilo menu*/
+.menu a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.menu a:hover {
+    background-color: #ddd;
+    color: black;
+}
+.menu a.active {
+    background-color: #04AA6D;
+    color: white; 
+}
+
+/* formulario */
+.contacto {
+    width: 75%;
+    background-image: linear-gradient(black, whitesmoke);
+    border: 1px solid black;
+    margin-top: 5px;
+    margin: auto;
+    border-radius: 1em/1em;
+}
+.textocontacto{
+    color: whitesmoke;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+.formulario label{
+    display:block;
+    font-weight:bold;
+}
+.formulario input,.formulario select,.formulario textarea,.formulario label{
+    padding:5px;
+    width:50%;
+    margin: 5px 0px 0px 25%;
+}
+.formulario textarea{
+    resize:none;
+    height:80px;
+}
+.bottom {
+    margin: 10px 10px 10px 40%;
+}
+.textoerror {
+    border: 1px solid red;
+}
+.textobien {
+    border: 0.1px solid grey;
+}
+
+/* footer */
+.footer {
+    margin-top: 10px;
+}
+.foot01 {
+    margin-bottom: 30px;
+    margin-right: 125px;
+}
+.foot02 {
+    margin-bottom: 50px;
+    float: right;
+}
+.footlinks {
+    margin-bottom: 90px;
+    margin-left: 20px;
+}

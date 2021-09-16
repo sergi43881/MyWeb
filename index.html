@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/global.css">
+        <script type="text/javascript" src="js/code.js"></script>
+        <title>Practiques Offing - MyWeb -</title>
+    </head>
+    <body>
+        <!-- Cabecera -->
+        <div class="cabecera">
+            <img class="imglogo" src="images/logo2.svg">
+        </div>
+ 
+        <!-- Menu -->
+        <div class="menu">
+            <a class="active" href="#Inicio">Inicio</a>
+            <a href="#web_solutions.html">Diseño web</a>
+            <a href="#shoping_solutions.html">Comercio elecrónico</a>
+            <a href="#hosting.html">Hospedaje</a>
+            <a href="#contacto.html">Contacto</a>
+        </div>
+
+        <!-- Slide -->
+        <div class="slide">
+            <a href="#contacto.html" title="Contacte con nosotros"><img height="250" width="100%" src="images/slide.jpg"></a>
+        </div>
+
+        <!-- Temas -->
+        <div class="temas">
+            <div class="tema1">
+                <p class="textotema">Diseños web personalizados</p>
+                <a href="#web_solutions.html" title="Desarrollo paginas web"><img class="imagentema" height="75%" width="75%" src="images/diseny.jpeg"></a>
+            </div>
+            <div class="tema2">
+                <p class="textotema">Comercio electronico y posicionamiento</p>
+                <a href="#shoping_solutions.html" title="Desarrollo web-shop"><img class="imagentema" height="75%" width="75%" src="images/shop.jpg"></a>
+            </div>
+        </div>
+
+        <!-- Contacto -->
+        <div class="contacto">
+            <p class="textocontacto">Rellena el siguiente formulario y nos pondremos en contacto contigo en la mayor brevedad.</p>
+            
+            <form action="#" class="formulario" id="contactform">
+                <label for="nombre"></label>
+                <input type="text" name="nombre" placeholder="Escribe tu nombre *" id="nombre" required>
+    
+                <label for="email"></label>
+                <input type="text" name="email" placeholder="Escribe tu email *" id="email" required>
+    
+                <label for="telef"></label>
+                <input type="tel" name="telef" placeholder="Escribe tu telefono *" id="telef" required>
+    
+                <label for="asunto" id="test">Que proyecto necesitas?</label>
+                <select name="asunto" id="asunto">
+                    <option value="web">Web personalizada</option>
+                    <option value="shop">Shop on-line</option>
+                    <option value="posi">Posicionamiento web</option>
+                    <option value="host">Hosting</option>
+                </select>
+    
+                <label for="mensaje"></label>
+                <textarea name="mensaje" rows="5" cols="100" placeholder="Explicanos un poco mas..." id="mensaje"></textarea>
+    
+                <div class="bottom">
+                    <button type="button" name="button_envia" onclick="mostra()">Enviar datos</button>
+                    <button type="button" name="button_ esborra" onclick="esborra()">Borrar datos</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <img class="foot01" src="images/foot01.png">
+            <a href="https://twitter.com/offingsolutions" title="Siguenos en Twitter"> <img class="footlinks" src="images/twitter.png"></a>
+            <a href="https://www.facebook.com/offingwebsolutions/" title="Siguenos en Facebook"> <img class="footlinks" src="images/facebook.png"></a>
+            <a href="https://es.linkedin.com/company/offing-web-solutions-sl" title="Siguenos en Linkedin"> <img class="footlinks" src="images/linkedin.png"></a>
+            <img class="foot02" src="images/foot02.png">
+        </div>
+    </body>
+</html>
+
