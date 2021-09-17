@@ -4,8 +4,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/css_bs/bootstrap.min.css" />
         <link rel="stylesheet" href="css/global.css">
-        <script type="text/javascript" src="js/code.js"></script>
+        <script type="text/javascript" src="js/code.js"></script>  
+        <script src="js/js_jq/jquery-3.6.0.js"></script>
+        <script src="js/js_pp/popper.min.js"></script>
+        <script src="js/js_bs/bootstrap.min.js"></script>
         <title>Practiques Offing - MyWeb -</title>
     </head>
     <body>
@@ -43,11 +47,21 @@
         <!-- Contacto -->
         <div class="contacto">
             <p class="textocontacto">Rellena el siguiente formulario y nos pondremos en contacto contigo en la mayor brevedad.</p>
-            
-            <form action="#" class="formulario" id="contactform">
+
+            <div class="alert alert-danger" id="errornombre">
+                <strong>Al tanto!</strong> El camp client ha de estar cumplimentat.
+            </div>
+            <div class="alert alert-danger" id="erroremail">
+                <strong>Al tanto!</strong> El camp email ha de estar cumplimentat.
+            </div>
+            <div class="alert alert-danger" id="errortelef">
+                <strong>Al tanto!</strong> El camp telefon ha de estar cumplimentat.
+            </div>
+
+              <form action="#" class="formulario" id="contactform">
                 <label for="nombre"></label>
                 <input type="text" name="nombre" placeholder="Escribe tu nombre *" id="nombre" required>
-    
+
                 <label for="email"></label>
                 <input type="text" name="email" placeholder="Escribe tu email *" id="email" required>
     
@@ -66,7 +80,7 @@
                 <textarea name="mensaje" rows="5" cols="100" placeholder="Explicanos un poco mas..." id="mensaje"></textarea>
     
                 <div class="bottom">
-                    <button type="button" name="button_envia" onclick="mostra()">Enviar datos</button>
+                    <button type="button" name="button_envia" onclick="valida()">Enviar datos</button>
                     <button type="button" name="button_ esborra" onclick="esborra()">Borrar datos</button>
                 </div>
             </form>
@@ -77,7 +91,7 @@
             <img class="foot01" src="images/foot01.png">
             <a href="https://twitter.com/offingsolutions" title="Siguenos en Twitter"> <img class="footlinks" src="images/twitter.png"></a>
             <a href="https://www.facebook.com/offingwebsolutions/" title="Siguenos en Facebook"> <img class="footlinks" src="images/facebook.png"></a>
-            <a href="https://es.linkedin.com/company/offing-web-solutions-sl" title="Siguenos en Linkedin"> <img class="footlinks" src="images/linkedin.png"></a>
+            <a href="https://es.linkedin.com/company/offing-web-solutions-sl" title="Siguenos en Linkedin"> <img class="footlinks   " src="images/linkedin.png"></a>
             <img class="foot02" src="images/foot02.png">
         </div>
     </body>

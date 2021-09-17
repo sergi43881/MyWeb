@@ -1,54 +1,84 @@
 /*
     Validacion formulario.
 */
+window.onload = function() {
+    esborra();
+};
+
+// Sistema de validacion grupal. Valida campos formulario obligatorios que no esten vacios.
+
+function valida() {
+
+    inierr(); // inicializa errores
+
+    if (document.getElementById("telef").value == "") {
+        $("#telef").addClass("textoerror");                 // Atributos error telef
+        $("#telef").focus();                                // Posiciona en telef
+        $("#errortelef").show();                            // Muestra error telef
+    }   
+    if (document.getElementById("email").value == "") {
+        $("#email").addClass("textoerror");                 // Atributos error email
+        $("#email").focus();                                // Posiciona en email
+        $("#erroremail").show();                            // Muestra error email
+    }
+    if (document.getElementById("nombre").value == "") {
+        $("#nombre").addClass("textoerror");                // Atributos error nombre
+        $("#nombre").focus();                               // Posiciona en nombre
+        $("#errornombre").show();                           // Muestra error nombre
+    }
+}
+
+// Inicializa formulario.
+function esborra() {
+    inierr();
+    document.getElementById("contactform").reset();
+}
+// Inicializa campos error.
+function inierr() {
+    $("#errornombre").hide();                           // oculta error nombre
+    $("#erroremail").hide();                            // oculta error email
+    $("#errortelef").hide();                            // oculta error telefon
+    $("#nombre").removeClass("textoerror");             // quita borde rojo nombre
+    $("#email").removeClass("textoerror");              // quita borde rojo email
+    $("#telef").removeClass("textoerror");              // quita borde rojo telef
+}
+
+/* Sistema de validacion campo a campo
+
 function mostra() {
     var Verror = valida();
     switch (Verror) {
         case 1:
-            alert ("El campo NOMBRE no esta cumplimentado")
+            $("#errornombre").show();  // muestra error nombre
             break;
         case 2:
-               alert ("El campo EMAIL no esta cumplimentado")
+            $("#erroremail").show();   // muestra error email
             break;;
         case 3:
-            alert ("El campo TELEFON no esta cumplimentado")
+            $("#errortelef").show();   // muestra error telef
             break;;
     }
 }
 
 // Valida campos formulario que no esten vacios.
 function valida() {
+
+    inierr(); // inicializa errores
+    
     if (document.getElementById("nombre").value == "") {
-        document.getElementById("nombre").className = "textoerror";
-        document.getElementById("nombre").focus();
+        $("#nombre").addClass("textoerror");
+        $("#nombre").focus();
         return 1;
     }
-    else {
-        document.getElementById("nombre").className = "textobien";
-    }
     if (document.getElementById("email").value == "") {
-        document.getElementById("email").className = "textoerror";
-        document.getElementById("email").focus();
+        $("#email").addClass("textoerror");
+        $("#email").focus();
         return 2;
     }
-    else {
-        document.getElementById("email").className = "textobien";
-    }
     if (document.getElementById("telef").value == "") {
-        document.getElementById("telef").className = "textoerror";
-        document.getElementById("telef").focus();
+        $("#telef").addClass("textoerror");
+        $("#telef").focus();
         return 3;
     }
-    else {
-        document.getElementById("telef").className = "textobien";
-    }
     return 0;
-}
-
-// Limpia campos formulario.
-function esborra() {
-    document.getElementById("email").className = "textobien";
-    document.getElementById("telef").className = "textobien";
-    document.getElementById("nombre").className = "textobien";
-    document.getElementById("contactform").reset();
-}
+} */

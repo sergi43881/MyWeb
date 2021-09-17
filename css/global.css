@@ -115,9 +115,7 @@ body {
 }
 .textoerror {
     border: 1px solid red;
-}
-.textobien {
-    border: 0.1px solid grey;
+    background-color: #df4759;
 }
 
 /* footer */
