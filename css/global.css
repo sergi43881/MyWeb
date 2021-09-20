@@ -27,43 +27,6 @@ body {
     overflow: hidden;
 }
 
-/* slide */
-.slide {
-    height: 250px;
-    margin-top: 3px;
-}
-
-/* Temas */
-.temas {
-    height: 250px;
-    width: 100%;
-    margin-top: 50px;
-}
-.tema1 {
-    width: 49.7%;
-    height: 100%;
-    display: inline-block;
-}
-.tema2 {
-    width: 49.7%;
-    height: 100%;
-    display: inline-block;
-}
-.textotema {
-    color: whitesmoke;
-    font-weight: bold;
-    text-align: center;
-    font-size: 25px;
-    font-style: italic;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-.imagentema {
-    border-radius: 1em/1em;
-    display: block;
-    margin: auto;
-}
-
 /* Estilo menu*/
 .menu a {
     float: left;
@@ -82,14 +45,40 @@ body {
     color: white; 
 }
 
+/* slide */
+.slide {
+    height: 250px;
+    margin-top: 3px;
+}
+
+/* Temas */
+.temas {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+.textotema {
+    color: whitesmoke;
+    font-weight: bold;
+    text-align: center;
+    font-size: 25px;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.imagentema {
+    border-radius: 1em/1em;
+    display: block;
+    margin: auto;
+}
+
 /* formulario */
 .contacto {
     width: 75%;
     background-image: linear-gradient(black, whitesmoke);
     border: 1px solid black;
-    margin-top: 5px;
     margin: auto;
     border-radius: 1em/1em;
+    margin-bottom: 30px;
 }
 .textocontacto{
     color: whitesmoke;
@@ -119,18 +108,7 @@ body {
 }
 
 /* footer */
-.footer {
-    margin-top: 10px;
-}
-.foot01 {
-    margin-bottom: 30px;
-    margin-right: 125px;
-}
-.foot02 {
-    margin-bottom: 50px;
-    float: right;
-}
 .footlinks {
-    margin-bottom: 90px;
-    margin-left: 20px;
-}
+    margin-top: 120px;
+    margin-left: 70px;
+} 
