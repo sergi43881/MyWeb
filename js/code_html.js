@@ -1,6 +1,10 @@
 /*
     Validacion formulario.
 */
+// variables generales 
+verror = false;
+var mapa;
+
 window.onload = function() {
     checkCookie();
     esborra();
@@ -60,7 +64,7 @@ function getCookie(cname) {
 }
 
 // Ubicacion
-var mapa;
+
 function initialize() {
 		// las coordenadas de Barcelona		
 		var ubicacion = new google.maps.LatLng(41.216488, 1.727132)
@@ -105,10 +109,12 @@ function valida() {
     }
 }
 
-// Inicializa formulario.
+// Inicializa formulario y oculta pantalla login
 function esborra() {
     inierr();
-    document.getElementById("contactform").reset();
+    document.getElementById("contactform").reset();     // inicializa formulario
+    document.getElementById("login_form").reset();      // inicializa formulario login
+    $("#login_notice").hide();                          // oculta pantalla login
 }
 // Inicializa campos error.
 function inierr() {
@@ -118,6 +124,54 @@ function inierr() {
     $("#nombre").removeClass("textoerror");             // quita borde rojo nombre
     $("#email").removeClass("textoerror");              // quita borde rojo email
     $("#telef").removeClass("textoerror");              // quita borde rojo telef
+    $("#erroruser").hide();                             // oculta error login-usuario
+    $("#errorpass").hide();                             // oculta error login-pass
+    $("#user").removeClass("erroruser");                // quita borde rojo login-nombre
+    $("#pass").removeClass("errorpass");                // quita borde rojo login-email
+    verror = false;                                     // variable control errores
+}
+
+function log_in() {
+    inierr();
+    $("#login_notice").addClass("login_notice");
+    $("#login_notice").show(); 
+}
+
+function log_out() {
+    inierr();
+    setCookie("logueado", "no", 20);
+    $("#salgo").hide();
+    $("#entro").show();
+}
+
+function login_cancela() {
+    $("#login_notice").removeClass("login_notice");
+    $("#login_notice").hide (); 
+}
+function login_valida() {
+
+    inierr(); // inicializa errores
+
+    if (document.getElementById("pass").value == "") {
+        $("#pass").addClass("errorpass");                  // Atributos error pass
+        $("#pass").focus();                                // Posiciona en pass
+        $("#errorpass").show();                            // Muestra error pass
+        verror = true;
+    }
+    if (document.getElementById("user").value == "") {
+        $("#user").addClass("erroruser");                  // Atributos error user
+        $("#user").focus();                                // Posiciona en user
+        $("#erroruser").show();                            // Muestra error user
+        verror = true;
+    }
+    if (verror == false) {
+        $("#login_notice").removeClass("login_notice");
+        $("#login_notice").hide (); 
+        $("#entro").hide();
+        $("#salgo").show();
+        setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
+        document.getElementById("login_form").reset();      // inicializa formulario login
+    }
 }
 
 /* Sistema de validacion campo a campo
