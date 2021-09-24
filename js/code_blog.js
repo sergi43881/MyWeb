@@ -61,25 +61,25 @@ function getCookie(cname) {
 // Inicializa formulario y oculta pantalla login
 function esborra() {
     inierr();
-    document.getElementById("blogform").reset(); 
+    document.getElementById("blogform").reset();        // inicializa formulario texto
     document.getElementById("login_form").reset();      // inicializa formulario login
-    $('#comentarios').text("");
+    $('#comentarios').text("");                         // inicializa historial texto
     $("#login_notice").hide();                          // oculta pantalla login
 }
 
 // Añade comentario al contenedor
 function mascoment() {
-    var textox = tinymce.get('mensaje').getContent();
-    if (textox == "") {
-        $("#mensaje").addClass("errortexto");                        // Atributos error texto
-        $("#mensaje").focus();                                      // Posiciona en texto
+    var textox = tinymce.get('mensaje').getContent();   // recupera texto de Tiny
+    if (textox == "") {                                 // Valida contenido texto
+        $("#mensaje").addClass("textoerror");
+        $("#mensaje").focus();
         $("#errortexto").show();  
     }
     else {
-        $("#mensaje").removeClass("errortexto");                    // Atributos error text                                 // Posiciona en texto
+        $("#mensaje").removeClass("textoerror");        // inicializa error texto
         $("#errortexto").hide();  
     }    
-    $("#comentarios").append(textox);
+    $("#comentarios").append(textox);                   // añade texto a historial textos
 }
 
 // Inicializa campos error.
@@ -87,8 +87,8 @@ function inierr() {
     $("#errortexto").hide();
     $("#erroruser").hide();                             // oculta error login-usuario
     $("#errorpass").hide();                             // oculta error login-pass
-    $("#user").removeClass("erroruser");                // quita borde rojo login-nombre
-    $("#pass").removeClass("errorpass");                // quita borde rojo login-email
+    $("#user").removeClass("textoerror");               // quita borde rojo login-nombre
+    $("#pass").removeClass("textoerror");               // quita borde rojo login-email
     verror = false;                                     // variable control errores
 }
 
@@ -111,16 +111,16 @@ function login_cancela() {
 }
 function login_valida() {
 
-    inierr(); // inicializa errores
+    inierr(); // inicializa errores login
 
     if (document.getElementById("pass").value == "") {
-        $("#pass").addClass("errorpass");                  // Atributos error pass
+        $("#pass").addClass("textoerror");                 // Atributos error pass
         $("#pass").focus();                                // Posiciona en pass
         $("#errorpass").show();                            // Muestra error pass
         verror = true;
     }
     if (document.getElementById("user").value == "") {
-        $("#user").addClass("erroruser");                  // Atributos error user
+        $("#user").addClass("textoerror");                 // Atributos error user
         $("#user").focus();                                // Posiciona en user
         $("#erroruser").show();                            // Muestra error user
         verror = true;

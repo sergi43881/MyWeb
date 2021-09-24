@@ -126,8 +126,8 @@ function inierr() {
     $("#telef").removeClass("textoerror");              // quita borde rojo telef
     $("#erroruser").hide();                             // oculta error login-usuario
     $("#errorpass").hide();                             // oculta error login-pass
-    $("#user").removeClass("erroruser");                // quita borde rojo login-nombre
-    $("#pass").removeClass("errorpass");                // quita borde rojo login-email
+    $("#user").removeClass("textoerror");               // quita borde rojo login-nombre
+    $("#pass").removeClass("textoerror");               // quita borde rojo login-email
     verror = false;                                     // variable control errores
 }
 
@@ -153,13 +153,13 @@ function login_valida() {
     inierr(); // inicializa errores
 
     if (document.getElementById("pass").value == "") {
-        $("#pass").addClass("errorpass");                  // Atributos error pass
+        $("#pass").addClass("textoerror");                  // Atributos error pass
         $("#pass").focus();                                // Posiciona en pass
         $("#errorpass").show();                            // Muestra error pass
         verror = true;
     }
     if (document.getElementById("user").value == "") {
-        $("#user").addClass("erroruser");                  // Atributos error user
+        $("#user").addClass("textoerror");                  // Atributos error user
         $("#user").focus();                                // Posiciona en user
         $("#erroruser").show();                            // Muestra error user
         verror = true;
@@ -173,43 +173,3 @@ function login_valida() {
         document.getElementById("login_form").reset();      // inicializa formulario login
     }
 }
-
-/* Sistema de validacion campo a campo
-
-function mostra() {
-    var Verror = valida();
-    switch (Verror) {
-        case 1:
-            $("#errornombre").show();  // muestra error nombre
-            break;
-        case 2:
-            $("#erroremail").show();   // muestra error email
-            break;;
-        case 3:
-            $("#errortelef").show();   // muestra error telef
-            break;;
-    }
-}
-
-// Valida campos formulario que no esten vacios.
-function valida() {
-
-    inierr(); // inicializa errores
-    
-    if (document.getElementById("nombre").value == "") {
-        $("#nombre").addClass("textoerror");
-        $("#nombre").focus();
-        return 1;
-    }
-    if (document.getElementById("email").value == "") {
-        $("#email").addClass("textoerror");
-        $("#email").focus();
-        return 2;
-    }
-    if (document.getElementById("telef").value == "") {
-        $("#telef").addClass("textoerror");
-        $("#telef").focus();
-        return 3;
-    }
-    return 0;
-} */
