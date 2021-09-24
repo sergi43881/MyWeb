@@ -114,7 +114,9 @@ function esborra() {
     inierr();
     document.getElementById("contactform").reset();     // inicializa formulario
     document.getElementById("login_form").reset();      // inicializa formulario login
+    document.getElementById("registro_form").reset();   // inicializa formulario registro
     $("#login_notice").hide();                          // oculta pantalla login
+    $("#registro_notice").hide();                       // oculta pantalla registro
 }
 // Inicializa campos error.
 function inierr() {
@@ -129,6 +131,14 @@ function inierr() {
     $("#user").removeClass("textoerror");               // quita borde rojo login-nombre
     $("#pass").removeClass("textoerror");               // quita borde rojo login-email
     verror = false;                                     // variable control errores
+    $("#errormail").hide();                             // oculta error registro email
+    $("#errorpassw").hide();                            // oculta error registro pass
+    $("#errornom").hide();                              // oculta error registro nombre 
+    $("#errorape").hide();                              // oculta error registro apellido 
+    $("#r_ape").removeClass("textoerror");              // quita borde rojo registro apellido
+    $("#r_nom").removeClass("textoerror");              // quita borde rojo registro nombre
+    $("#r_pass").removeClass("textoerror");             // quita borde rojo registro pass
+    $("#r_user").removeClass("textoerror");             // quita borde rojo registro email
 }
 
 function log_in() {
@@ -147,7 +157,9 @@ function log_out() {
 function login_cancela() {
     $("#login_notice").removeClass("login_notice");
     $("#login_notice").hide (); 
+    document.getElementById("login_form").reset();      // inicializa formulario login
 }
+
 function login_valida() {
 
     inierr(); // inicializa errores
@@ -171,5 +183,54 @@ function login_valida() {
         $("#salgo").show();
         setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
         document.getElementById("login_form").reset();      // inicializa formulario login
+    }
+}
+
+function registro() {
+    $("#login_notice").removeClass("login_notice");
+    $("#login_notice").hide (); 
+    inierr();
+    $("#registro_notice").addClass("registro_notice");
+    $("#registro_notice").show();
+}
+
+function reg_cancela() {
+    $("#registro_notice").removeClass("registro_notice");
+    $("#registro_notice").hide (); 
+    document.getElementById("registro_form").reset();    // inicializa formulario registro
+}
+
+function reg_valida() {
+
+    inierr(); // inicializa errores
+
+    if (document.getElementById("r_ape").value == "") {
+        $("#r_ape").addClass("textoerror");                 // Atributos error apellido
+        $("#r_ape").focus();                                // Posiciona en apellido
+        $("#errorape").show();                              // Muestra error apellido
+        verror = true;
+    }
+    if (document.getElementById("r_nom").value == "") {
+        $("#r_nom").addClass("textoerror");                 // Atributos error nombre
+        $("#r_nom").focus();                                // Posiciona en nombre
+        $("#errornom").show();                              // Muestra error nombre
+        verror = true;
+    }
+    if (document.getElementById("r_pass").value == "") {
+        $("#r_pass").addClass("textoerror");                 // Atributos error pass
+        $("#r_pass").focus();                                // Posiciona en pass
+        $("#errorpassw").show();                              // Muestra error pass
+        verror = true;
+    }
+    if (document.getElementById("r_user").value == "") {
+        $("#r_user").addClass("textoerror");                 // Atributos error user
+        $("#r_user").focus();                                // Posiciona en user
+        $("#errormail").show();                             // Muestra error user
+        verror = true;
+    }
+    if (verror == false) {
+        $("#registro_notice").removeClass("registro_notice");
+        $("#registro_notice").hide (); 
+        document.getElementById("registro_form").reset();    // inicializa formulario registro
     }
 }

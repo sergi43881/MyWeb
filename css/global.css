@@ -100,7 +100,7 @@ body {
 }
 .textoerror {
     border: 1px solid red;
-    background-color: #df4759;
+    background-color: #d8bdbe;
 }
 
 /* Ubicacion */
@@ -206,4 +206,41 @@ body {
 .textocoment {
     color: red !important;
     font-size: 15px !important;
+}
+.registro00 {
+    margin-top: 10px;
+    margin-left: 40px;
+}
+.registro_notice {
+    background: rgba(33, 41, 52, .85);
+    left: 0;
+    bottom: 0;
+    right: 0;
+    top: 0;
+    display: flex;
+    position: fixed;
+    z-index: 999;
+}
+.registro_notice .registro_content {
+    background: whitesmoke;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(33, 41, 52, .75);
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    max-width: 200px;
+    min-width: 200px !important;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    font-size: 15px;
+}
+.registro_bottom {
+    margin: 20px 0px 5px 25px;
+}
+.registro_text{
+    font-size: 20px;
+    margin: auto;
 }

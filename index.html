@@ -174,27 +174,71 @@
 
             <p class="login_text">Acceso a MyWeb</p>
         
-            <div class="alert alert-danger" id="erroruser">
+            <div class="alert alert-danger" id="erroruser" style="display: none;">
                 <strong>Al tanto!</strong> L'usuari ha de estar cumplimentat.
             </div>
-            <div class="alert alert-danger" id="errorpass">
+            <div class="alert alert-danger" id="errorpass" style="display: none;">
                 <strong>Al tanto!</strong> La password ha de estar cumplientada.
             </div>
         
             <form action="#" class="login_form" id="login_form">
                 <label for="user"></label>
-                <input type="text" name="user" placeholder="Usuario" id="user" required>
+                <input type="email" name="user" placeholder="Su Email" id="user" required>
                 <br>
                 <label for="pass"></label>
                 <input type="password" name="pass" placeholder="Password" id="pass" required>
-
+               
                 <div>
                   <button class="login_bottom" type="button" name="log_envia" onclick="login_valida()">Entrar</button>
                   <button class="login_bottom" type="button" name="log_cancela" onclick="login_cancela()">Cancelar</button>
                 </div>
+
+                <div class="registro00" >
+                  <a href="#" onclick="registro()">No esta registrado?</a>
+                </div>
             </form>
           </div>
         </div>
+
+      <!-- Registro -->
+      <div id="registro_notice">
+        <div class="registro_content">
+
+          <p class="registro_text">Registrese a Myweb</p>
+      
+          <div class="alert alert-danger" id="errormail" style="display: none;">
+              <strong>Al tanto!</strong> El Email ha de estar cumplimentat.
+          </div>
+          <div class="alert alert-danger" id="errorpassw" style="display: none;">
+              <strong>Al tanto!</strong> La password ha de estar cumplientada.
+          </div>
+          <div class="alert alert-danger" id="errornom" style="display: none;">
+            <strong>Al tanto!</strong> El nom ha de estar cumplimentat.
+          </div>
+          <div class="alert alert-danger" id="errorape" style="display: none;">
+            <strong>Al tanto!</strong> El cognom ha de estar cumplimentat.
+        </div>
+      
+          <form action="#" class="registro_form" id="registro_form">
+              <label for="r_user"></label>
+              <input type="email" name="r_user" placeholder="Su Email" id="r_user" required>
+              <br>
+              <label for="r_pass"></label>
+              <input type="password" name="r_pass" placeholder="Password" id="r_pass" required>
+              <br>
+              <label for="r_nom"></label>
+              <input type="text" name="r_nom" placeholder="Su nombre" id="r_nom" required>
+              <br>
+              <label for="r_ape"></label>
+              <input type="text" name="r_ape" placeholder="Su apellido" id="r_ape" required>
+             
+              <div>
+                <button class="registro_bottom" type="button" name="registro_envia" onclick="reg_valida()">Registrarme</button>
+                <button class="registro_bottom" type="button" name="registro_cancela" onclick="reg_cancela()">Cancelar</button>
+              </div>
+          </form>
+        </div>
+      </div>
 
     </body>
 </html>
