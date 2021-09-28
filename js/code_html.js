@@ -4,6 +4,7 @@
 // variables generales 
 verror = false;
 var mapa;
+let hola = "";
 
 window.onload = function() {
     checkCookie();
@@ -22,9 +23,12 @@ function checkCookie() {
     else {
         $("#window-notice").hide(); 
         let logueado = getCookie("logueado");
-        if (logueado == "si")
+        if (logueado == "si") {
             $("#salgo").show();
-        else {
+            hola = getCookie("hola");
+            document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
+            $("#hola").show();
+        } else {
             $("#entro").show();
         }    
     }   
@@ -139,6 +143,10 @@ function inierr() {
     $("#r_nom").removeClass("textoerror");              // quita borde rojo registro nombre
     $("#r_pass").removeClass("textoerror");             // quita borde rojo registro pass
     $("#r_user").removeClass("textoerror");             // quita borde rojo registro email
+    $("#errorconex").hide();                            // oculta error conexion BD
+    $("#errorlogin01").hide();                          // oculta error usuario no valido.
+    $("#errorlogin02").hide();                          // oculta error password no valida.
+    $("#errorreg01").hide();                            // oculta error registro.
 }
 
 function log_in() {
@@ -150,8 +158,11 @@ function log_in() {
 function log_out() {
     inierr();
     setCookie("logueado", "no", 20);
+    hola = "";
+    setCookie("hola", hola, 20);
     $("#salgo").hide();
     $("#entro").show();
+    $("#hola").hide();
 }
 
 function login_cancela() {
@@ -163,27 +174,61 @@ function login_cancela() {
 function login_valida() {
 
     inierr(); // inicializa errores
-
+ 
     if (document.getElementById("pass").value == "") {
         $("#pass").addClass("textoerror");                  // Atributos error pass
         $("#pass").focus();                                // Posiciona en pass
         $("#errorpass").show();                            // Muestra error pass
         verror = true;
     }
+    else {
+        var p_pass = document.getElementById("pass").value;
+    }
     if (document.getElementById("user").value == "") {
-        $("#user").addClass("textoerror");                  // Atributos error user
+        $("#user").addClass("textoerror");                 // Atributos error user
         $("#user").focus();                                // Posiciona en user
         $("#erroruser").show();                            // Muestra error user
         verror = true;
     }
-    if (verror == false) {
-        $("#login_notice").removeClass("login_notice");
-        $("#login_notice").hide (); 
-        $("#entro").hide();
-        $("#salgo").show();
-        setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
-        document.getElementById("login_form").reset();      // inicializa formulario login
+    else {
+        var p_user = document.getElementById("user").value;
     }
+
+    if (verror == true) {
+        return;
+    }
+    
+    $.ajax({
+        type: "POST",
+        data: {e_user: p_user, e_pass: p_pass},
+        url: '/php/valuser.php',
+        success: function(data) {
+            if (data.status == "error01") {
+                $("#errorlogin01").show(); 
+            }
+            if (data.status == "error02") {
+                $("#errorlogin02").show(); 
+            }
+            if (data.status == "ok") {
+                var nombcli = (data.nomcli);
+                $("#login_notice").removeClass("login_notice");
+                $("#login_notice").hide (); 
+                $("#entro").hide();
+                $("#salgo").show();
+                setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
+                document.getElementById("login_form").reset();      // inicializa formulario login
+                hola = "Hola " + nombcli;
+                setCookie("hola", hola, 20);                        // cambia cookie bienvenida user
+                document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
+                $("#hola").show();
+            }
+        },
+        error: function(e, msg) { // Si no ha podido conectar con el servidor 
+            // Código en caso de fracaso en el envío. Muestra error conexio
+            $("#errorconex").show();
+            return true;
+        }
+    });
 }
 
 function registro() {
@@ -210,11 +255,17 @@ function reg_valida() {
         $("#errorape").show();                              // Muestra error apellido
         verror = true;
     }
+    else {
+        var reg_ape = document.getElementById("r_ape").value;
+    }
     if (document.getElementById("r_nom").value == "") {
         $("#r_nom").addClass("textoerror");                 // Atributos error nombre
         $("#r_nom").focus();                                // Posiciona en nombre
         $("#errornom").show();                              // Muestra error nombre
         verror = true;
+    }
+    else {
+        var reg_nom = document.getElementById("r_nom").value;
     }
     if (document.getElementById("r_pass").value == "") {
         $("#r_pass").addClass("textoerror");                 // Atributos error pass
@@ -222,15 +273,50 @@ function reg_valida() {
         $("#errorpassw").show();                              // Muestra error pass
         verror = true;
     }
+    else {
+        var reg_pass = document.getElementById("r_pass").value;
+    }
     if (document.getElementById("r_user").value == "") {
         $("#r_user").addClass("textoerror");                 // Atributos error user
         $("#r_user").focus();                                // Posiciona en user
         $("#errormail").show();                             // Muestra error user
         verror = true;
     }
+    else {
+        var reg_user = document.getElementById("r_user").value;
+    }
     if (verror == false) {
-        $("#registro_notice").removeClass("registro_notice");
-        $("#registro_notice").hide (); 
-        document.getElementById("registro_form").reset();    // inicializa formulario registro
+        $.ajax({
+            type: "POST",
+            data: {rp_user: reg_user, rp_pass: reg_pass, rp_nom: reg_nom, rp_ape: reg_ape},
+            url: '/php/reguser.php',
+            success: function(data) {
+                 if (data.status == "error03") {    
+                    $("#errorreg01").show(); 
+                }
+                if (data.status == "ok") {
+                    var nombcli = reg_nom;
+                    $("#login_notice").removeClass("login_notice");
+                    $("#login_notice").hide (); 
+                    $("#entro").hide();
+                    $("#salgo").show();
+                    setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
+                    document.getElementById("login_form").reset();      // inicializa formulario login
+                    hola = "Hola " + nombcli;
+                    setCookie("hola", hola, 20);                        // cambia cookie bienvenida user
+                    document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
+                    $("#hola").show();
+                    $("#registro_notice").removeClass("registro_notice");
+                    $("#registro_notice").hide (); 
+                    document.getElementById("registro_form").reset();    // inicializa formulario registro
+                }
+            },
+            error: function(e, msg) { // Si no ha podido conectar con el servidor 
+                // Código en caso de fracaso en el envío. Muestra error conexio
+                $("#errorconex").show();
+                return true;
+            }
+        });
+
     }
 }

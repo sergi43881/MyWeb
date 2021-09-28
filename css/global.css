@@ -229,7 +229,7 @@ body {
     display: flex;
     flex-direction: column;
     margin: auto;
-    max-width: 200px;
+    max-width: 500px;
     min-width: 200px !important;
     overflow: hidden;
     position: relative;
@@ -238,9 +238,26 @@ body {
     font-size: 15px;
 }
 .registro_bottom {
-    margin: 20px 0px 5px 25px;
+    margin-top: 20px;
+    margin-left: 70px;
 }
 .registro_text{
     font-size: 20px;
     margin: auto;
+}
+.cont {
+    margin-top: 5px;
+    width: 400px;
+}
+.registro_form {
+    margin-left: 50px;
+}
+.hola {
+    position: absolute;
+    right: 0;
+    padding-right: 70px;
+    margin-bottom: -80px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #04AA6D;
 }
