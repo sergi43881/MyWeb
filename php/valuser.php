@@ -2,8 +2,8 @@
 
 header("content-type: application/json");
 
-$usuario = $_POST['e_user'];
-$clave = $_POST['e_pass'];
+$v_user = $_POST['e_user'];
+$v_pass = $_POST['e_pass'];
 
 $conexion=mysqli_connect("localhost" ,"root" ,"mimamamemima", "myweb");
 if (!$conexion) {
@@ -12,7 +12,7 @@ if (!$conexion) {
     exit;
 }
 
-$consulta = "SELECT * FROM users WHERE email='$usuario'";
+$consulta = "SELECT * FROM users WHERE email='$v_user'";
 $resultado=mysqli_query($conexion, $consulta);
 $filas = mysqli_num_rows($resultado);
 $fila1 = mysqli_fetch_assoc($resultado);
@@ -22,11 +22,11 @@ $pass = $fila1['passw'];
 mysqli_close($conexion);
 
 if ($filas > 0) {
-    if ($pass != $clave) {
-        echo json_encode(["status" => "error02", "message" => "Password incorrecta"]);
+    if(password_verify($v_pass, $pass)) {    
+        echo json_encode(["status" => "ok", "nomcli" => $nomb]);
         exit;
     } else {
-      echo json_encode(["status" => "ok", "nomcli" => $nomb]);
+        echo json_encode(["status" => "error02", "message" => "Password incorrecta"]);
       exit;
     }
 } else {

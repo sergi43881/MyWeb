@@ -6,12 +6,13 @@ verror = false;
 var mapa;
 let hola = "";
 
-window.onload = function() {
+window.addEventListener("load", init, false)
+function init() {
     checkCookie();
     esborra();
     initialize();
     google.maps.event.addDomListener(window, "load", initialize);
-};
+}
 
 // Cookies
 function checkCookie() {
@@ -26,10 +27,13 @@ function checkCookie() {
         if (logueado == "si") {
             $("#salgo").show();
             hola = getCookie("hola");
+            p_user = getCookie("hola");
             document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
             $("#hola").show();
+            $("#verblog").show();
         } else {
             $("#entro").show();
+            $("#verblog").hide();
         }    
     }   
 }
@@ -163,6 +167,13 @@ function log_out() {
     $("#salgo").hide();
     $("#entro").show();
     $("#hola").hide();
+    $("#verblog").hide();
+    localStorage.setItem("usuario", "");                  // inicializa localstore
+    var URLactual = window.location;                      // si pinchan logout en pagina blog
+    if (URLactual == "http://localhost/blog.html") {      // abre pagina inicio.
+        document.location.href = "http://localhost/index.html";
+    }
+
 }
 
 function login_cancela() {
@@ -176,7 +187,7 @@ function login_valida() {
     inierr(); // inicializa errores
  
     if (document.getElementById("pass").value == "") {
-        $("#pass").addClass("textoerror");                  // Atributos error pass
+        $("#pass").addClass("textoerror");                 // Atributos error pass
         $("#pass").focus();                                // Posiciona en pass
         $("#errorpass").show();                            // Muestra error pass
         verror = true;
@@ -217,10 +228,12 @@ function login_valida() {
                 $("#salgo").show();
                 setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
                 document.getElementById("login_form").reset();      // inicializa formulario login
+                localStorage.setItem("usuario", p_user);            // guarda usuario en localstore
                 hola = "Hola " + nombcli;
                 setCookie("hola", hola, 20);                        // cambia cookie bienvenida user
                 document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
                 $("#hola").show();
+                $("#verblog").show();
             }
         },
         error: function(e, msg) { // Si no ha podido conectar con el servidor 

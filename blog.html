@@ -7,145 +7,123 @@
         <link rel="stylesheet" href="./css/css_bs/bootstrap.min.css" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="./css/global.css">
-        <script type="text/javascript" src="./js/code_blog.js"></script>  
-        <script src="./js/js_jq/jquery-3.6.0.js"></script>
-        <script src="./js/js_pp/popper.min.js"></script>
-        <script src="./js/js_bs/bootstrap.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
-        <script src="https://cdn.tiny.cloud/1/4vbela6q9wpjql3lfafbkhy970txlv45fkzhk78283u84f8b/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-        <script type="text/javascript">
-          tinymce.init({
-              selector: "textarea"
-           });
-          </script>
         <title>Practiques Offing - MyWeb -</title>
     </head>
     <body>
  
-        <!-- Menu -->
-            <nav class="navbar navbar-inverse menu">
-            <div class="container-fluid">
-              <div class="navbar-header">
-                <img class="imglogo" src="images/logo2.svg">
-              </div>
-              <ul class="nav navbar-nav-left">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#web_solutions.html">Diseño web</a></li>
-                <li><a href="#shoping_solutions.html">Comercio elecrónico</a></li>
-                <li><a class="visited" href="blog.html">Blog</a></li>
-                <li><a href="#contacto.html">Contacto</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li id="entro" onclick="log_in()"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li id="salgo" onclick="log_out()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-              </ul>
-            </div>
-          </nav>
+      <!-- Menu -->
+      <nav class="navbar navbar-inverse menu">
+        <div class="container-fluid">
+          <div class="navbar-header">
+             <img class="imglogo" src="images/logo2.svg">
+          </div>
+          <ul class="nav navbar-nav-left">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="#web_solutions.html">Diseño web</a></li>
+            <li><a href="#shoping_solutions.html">Comercio elecrónico</a></li>
+            <li id="verblog"><a class="visited" href="blog.html">Blog</a></li>
+            <li><a href="#contacto.html">Contacto</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="entro" onclick="log_in()"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="salgo" onclick="log_out()"><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          </ul>
+          <div id="hola" class="hola" style="display: none">
+            <p id="holatext" >Hola Sergi</p>
+          </div>
+        </div>
+      </nav>
 
         <!-- Cuerpo del blog-->
-        <div class="container-fluid contacto">
-          <div class="row">
-            <div class="col textotema">
-              <p>Escribe el texto que quieras que salga como comentario</p>
-            </div>
+      <div class="container-fluid contacto">
+        <div class="row">
+          <div class="col textotema">
+            <p>Escribe el texto que quieras que salga como comentario</p>
           </div>
-          <div class="row">
-            <div class="col">
+        </div>
+        <div class="row">
+          <div class="col">
 
-              <form action="#" class="formulario" id="blogform">
+            <form action="#" class="formulario" id="blogform">
                 
-                <div class="alert alert-danger" id="errortexto" style="display: none;">
-                  <strong>Al tanto!</strong> Tens que escriure quelcom cosa.
-                </div>
+              <div class="alert alert-danger" id="errortexto" style="display: none;">
+                <strong>Al tanto!</strong> Tens que escriure quelcom cosa.
+              </div>
 
-                <label for="mensaje"></label>
-                <textarea name="mensaje" rows="5" cols="100" placeholder="Cuentame tu historia..." id="mensaje"></textarea>
+              <label for="mensaje"></label>
+              <textarea name="mensaje" rows="5" cols="100" placeholder="Cuentame tu historia..." id="mensaje"></textarea>
     
-                <div class="bottom">
-                    <button type="button" name="button_envia" onclick="mascoment()">Añadir comentario</button>
-                    <button type="button" name="button_esborra" onclick="esborra()">Borrar datos</button>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Contenido de los comentarios-->
-        <div class="container-fluid contacto">
-          <div class="row">
-            <div class="col textotema">
-              <p>Comentarios que has creado</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col textocoment" id="comentarios">
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col">
-                    <img class="foot01" src="images/foot01.png" style="height:166px; width:427px;">
-                </div>
-                <div class="col">
-                    <img class="foot" src="images/telefono.png" style="height:50px; width: 50px;" alt="Llamanos">
-                    <a class="foot" href="tel:+34555112233">Llámanos al 555 11 22 33</a> 
-                    <br>
-                    <br>
-                    <img class="foot" src="images/whats.png" style="height:50px; width: 50px;" alt="Llamanos">
-                    <a class="foot" href="https://api.whatsapp.com/send?phone=555112233" target="_blank"> Envíanos un mensaje de WhatsApp</a>
-                    <br>
-                    <a href="https://twitter.com/offingsolutions" title="Siguenos en Twitter" target="_blank"> <img class="footlinks" src="images/twitter.png"></a>                        
-                    <a href="https://www.facebook.com/offingwebsolutions/" title="Siguenos en Facebook" target="_blank"> <img class="footlinks" src="images/facebook.png"></a>
-                    <a href="https://es.linkedin.com/company/offing-web-solutions-sl" title="Siguenos en Linkedin" target="_blank"> <img class="footlinks" src="images/linkedin.png"></a>
-                </div>
-                <div class="col">
-                    <img class="foot02" src="images/foot02.png" style="height:166px; width:427px;">
-                </div>
-            </div>
-        </div>
-
-        <!-- Avis cookies -->
-        <div id="window-notice">
-          <div class="content">
-              <div>Este sitio utiliza cookies para obtener la mejor experiencia en nuestra web. 
-              <a href="#">Leer más.</a></div>
-              <div class="okis" onclick="veurecookies()"><a href="#">Aceptar</a></div>
-          </div>
-        </div>
-
-      <!-- Login -->
-        <div id="login_notice">
-          <div class="login_content">
-
-            <p class="login_text">Acceso a MyWeb</p>
-        
-            <div class="alert alert-danger" id="erroruser">
-                <strong>Al tanto!</strong> L'usuari ha de estar cumplimentat.
-            </div>
-            <div class="alert alert-danger" id="errorpass">
-                <strong>Al tanto!</strong> La password ha de estar cumplientada.
-            </div>
-        
-            <form action="#" class="login_form" id="login_form">
-                <label for="user"></label>
-                <input type="text" name="user" placeholder="Usuario" id="user" required>
-                <br>
-                <label for="pass"></label>
-                <input type="password" name="pass" placeholder="Password" id="pass" required>
-
-                <div>
-                  <button class="login_bottom" type="button" name="log_envia" onclick="login_valida()">Entrar</button>
-                  <button class="login_bottom" type="button" name="log_cancela" onclick="login_cancela()">Cancelar</button>
-                </div>
+              <div class="bottom">
+                <button type="button" name="button_envia" onclick="mascoment()">Añadir comentario</button>
+                <button type="button" name="button_esborra" onclick="esborra_blog()">Borrar seleccion</button>
+              </div>
             </form>
+
           </div>
         </div>
+      </div>
+
+      <!-- Contenido de los comentarios-->
+      <div class="container-fluid contacto">
+        <div class="row">
+          <div class="col textotema">
+            <p>Comentarios que has creado</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col textocoment" id="comentarios">
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <img class="foot01" src="images/foot01.png" style="height:166px; width:427px;">
+          </div>
+          <div class="col">
+            <img class="foot" src="images/telefono.png" style="height:50px; width: 50px;" alt="Llamanos">
+            <a class="foot" href="tel:+34555112233">Llámanos al 555 11 22 33</a> 
+            <br>
+            <br>
+            <img class="foot" src="images/whats.png" style="height:50px; width: 50px;" alt="Llamanos">
+            <a class="foot" href="https://api.whatsapp.com/send?phone=555112233" target="_blank"> Envíanos un mensaje de WhatsApp</a>
+            <br>
+            <a href="https://twitter.com/offingsolutions" title="Siguenos en Twitter" target="_blank"> <img class="footlinks" src="images/twitter.png"></a>                        
+            <a href="https://www.facebook.com/offingwebsolutions/" title="Siguenos en Facebook" target="_blank"> <img class="footlinks" src="images/facebook.png"></a>
+            <a href="https://es.linkedin.com/company/offing-web-solutions-sl" title="Siguenos en Linkedin" target="_blank"> <img class="footlinks" src="images/linkedin.png"></a>
+          </div>
+          <div class="col">
+            <img class="foot02" src="images/foot02.png" style="height:166px; width:427px;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Avis cookies -->
+      <div id="window-notice">
+        <div class="content">
+          <div>Este sitio utiliza cookies para obtener la mejor experiencia en nuestra web. 
+            <a href="#">Leer más.</a></div>
+            <div class="okis" onclick="veurecookies()"><a href="#">Aceptar</a></div>
+        </div>
+      </div>
 
     </body>
+    
+    <script src="./js/js_jq/jquery-3.6.0.js"></script>
+    <script src="./js/js_pp/popper.min.js"></script>
+    <script src="./js/js_bs/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="https://cdn.tiny.cloud/1/4vbela6q9wpjql3lfafbkhy970txlv45fkzhk78283u84f8b/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script type="text/javascript" src="/js/code_html.js"></script>  
+    <script type="text/javascript" src="/js/code_blog.js"></script> 
+    <script type="text/javascript">
+      tinymce.init({
+          selector: "#mensaje"
+       });
+      </script>
+
 </html>
 
