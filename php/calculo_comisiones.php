@@ -19,7 +19,7 @@ if (!$bd_seleccionada) {
 /*leemos todos los campos de la tabla ps_megaaffiliates_orders con todos los registros que su comision no haya sido calculada*/
 $res_afiliados= mysql_query("SELECT * FROM $tabla_afiliados WHERE (comission=0) " ,$conexion) or die("No se han encontrado resultados en tabla PS_MEGAAFFILIATES_ORDERS");
 
-for($x1 = 0 ; $x1 < mysql_num_rows($res_afiliados) ; $x1++){
+    for($x1 = 0 ; $x1 < mysql_num_rows($res_afiliados) ; $x1++){
     $fila1 = mysql_fetch_assoc($res_afiliados);
     /* Cargamos campo de afilado para buscar en base de datos PS_CUSTOMER_GROUP */
     $codafi = $fila1['id_affiliate'];

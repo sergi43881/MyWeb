@@ -6,6 +6,7 @@ window.onload = function() {
 /*  checkCookie();
     esborra(); */
     esborra_blog();
+    carga_blog();
 }
 
 // Inicializa formulario y oculta pantalla login
@@ -13,44 +14,34 @@ function esborra_blog() {
     inierr();
     inierr_blog();
     document.getElementById("blogform").reset();        // inicializa formulario texto
-    $("#comentarios").text("");                         // inicializa historial texto
 }
 
 // Añade comentario al contenedor
 function mascoment() {
-    var textox = tinymce.get('mensaje').getContent();   // recupera texto de Tiny
-    if (textox == "") {                                 // Valida contenido texto
+    var p_comen = tinymce.get('mensaje').getContent();   // recupera texto de Tiny
+    if (p_comen == "") {                                 // Valida contenido texto
         $("#mensaje").addClass("textoerror");
         $("#mensaje").focus();
         $("#errortexto").show();  
     }
     else {
-        var p_user = localStorage.getItem("usuario");
-        alert(p_user);
-/*       $.ajax({
+        var p_user = localStorage.getItem("usuario");  // recupera usuario del area LocalStorage
+         
+        var hoy = new Date();                          // Monta fecha y hora
+        var fecha = hoy.getDate() + '-' + (hoy.getMonth() + 1) + '-' + hoy.getFullYear();
+        var hora = hoy.getHours() + ':' + hoy.getMinutes() + ':' + hoy.getSeconds();
+        var p_ahora = fecha + ' ' + hora;
+
+        $.ajax({
             type: "POST",
-            data: {user: p_user, e_pass: p_pass},
-            url: '/php/valuser.php',
+            data: {b_user: p_user, b_comen: p_comen, b_data: p_ahora},
+            url: '/php/regblog.php',
             success: function(data) {
-                if (data.status == "error01") {
-                    $("#errorlogin01").show(); 
-                }
-                if (data.status == "error02") {
-                    $("#errorlogin02").show(); 
+                if (data.status == "error05") {
+                    $("#errorblog05").show(); 
                 }
                 if (data.status == "ok") {
-                    var nombcli = (data.nomcli);
-                    $("#login_notice").removeClass("login_notice");
-                    $("#login_notice").hide (); 
-                    $("#entro").hide();
-                    $("#salgo").show();
-                    setCookie("logueado", "si", 20);                    // cambia cookie logueado SI
-                    document.getElementById("login_form").reset();      // inicializa formulario login
-                    hola = "Hola " + nombcli;
-                    setCookie("hola", hola, 20);                        // cambia cookie bienvenida user
-                    document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
-                    $("#hola").show();
-                    $("#verblog").show();
+                    carga_blog();
                 }
             },
             error: function(e, msg) { // Si no ha podido conectar con el servidor 
@@ -58,15 +49,38 @@ function mascoment() {
                 $("#errorconex").show();
                 return true;
             }
-        }); */
-        $("#comentarios").append(textox);               // añade texto a historial textos
-        $("#mensaje").removeClass("textoerror");        // inicializa error texto
-        $("#errortexto").hide();  
-        document.getElementById("blogform").reset();    // inicializa formulario texto
+        });
     }    
 }
 
 // Inicializa campos error.
 function inierr_blog() {
     $("#errortexto").hide();                                  // variable control errores
+    $("#errorblog05").hide();                                 // variable control errores
+}
+
+// carga comentarios.
+function carga_blog() {
+    var p_user = localStorage.getItem("usuario");             // recupera usuario del area LocalStorage
+    $.ajax({
+        type: "POST",
+        data: {b_user: p_user},
+        url: '/php/cargablog.php',
+        success: function(data) {
+            if (data.status == "ok") {
+                let datos = data.comentarios;
+                let times = data.tiempo;
+                $("#comentarios").text("");                     // inicializa historial texto
+                for (let x = 0; x < datos.length; x++) {
+                    $("#comentarios").append(times[x] + " " + datos[x]);  
+                }
+                $("#mensaje").removeClass("textoerror");        // inicializa error texto
+                $("#errortexto").hide();  
+                $("#errorblog05").hide();
+                document.getElementById("blogform").reset();    // inicializa formulario texto
+            } else {
+                alert("PETADA");
+            }
+        }
+    });
 }
