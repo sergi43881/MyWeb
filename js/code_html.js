@@ -319,6 +319,7 @@ function reg_valida() {
                     setCookie("hola", hola, 20);                        // cambia cookie bienvenida user
                     document.getElementById("hola").innerHTML = hola;   // Mensaje bienvenida login.
                     $("#hola").show();
+                    $("#verblog").show();
                     $("#registro_notice").removeClass("registro_notice");
                     $("#registro_notice").hide (); 
                     document.getElementById("registro_form").reset();    // inicializa formulario registro

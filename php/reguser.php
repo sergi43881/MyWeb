@@ -33,8 +33,7 @@ if ($filas > 0) {
             echo json_encode(["status" => "ok", "message" => "usuario registrado"]);
             exit;
     } else {
-            echo mysqli_error($conexion);
-            echo json_encode(["status" => "error04", "message" => mysqli_error($conexion)]);
+            echo json_encode(["status" => "error03", "message" =>"usuario ya existe"]);
             exit;
         }
     }

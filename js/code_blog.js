@@ -3,8 +3,6 @@
 */
 
 window.onload = function() {
-/*  checkCookie();
-    esborra(); */
     esborra_blog();
     carga_blog();
 }
@@ -14,7 +12,7 @@ function esborra_blog() {
     inierr_blog();
     document.getElementById("blogform").reset();        // inicializa formulario texto
     if (texto_borrar != "") {
-        borra_registro();
+        borra_registro(texto_borrar);
     }
 }
 
@@ -74,7 +72,10 @@ function carga_blog() {
                 let times = data.tiempo;
                 $("#comentarios").text("");                     // inicializa historial texto
                 for (let x = 0; x < datos.length; x++) {
-                    $("#comentarios").append(times[x] + " " + datos[x]);  
+                    $("#comentarios").append('<input type="button" id="bot_borra"'
+                                        + 'onclick="borra_registro(\''+times[x]+'\')" value="Borrar" style="color: blue; '
+                                        + 'font-size: 12px"/>'
+                                        +  " " + times[x] + " " + datos[x]);  
                 }
                 $("#mensaje").removeClass("textoerror");        // inicializa error texto
                 $("#errortexto").hide();  
@@ -87,7 +88,7 @@ function carga_blog() {
     });
 }
 
-function borra_registro() {
+function borra_registro(texto_borrar) {
     let p_borra = texto_borrar + "";
     var p_user = localStorage.getItem("usuario");             // recupera usuario del area LocalStorage
     $.ajax({

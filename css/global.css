@@ -76,6 +76,14 @@ body {
     border-radius: 1em/1em;
     margin-bottom: 30px;
 }
+.contacto2 {
+    width: 75%;
+    background-image: linear-gradient(rgb(139, 137, 137), whitesmoke);
+    border: 1px solid black;
+    margin: auto;
+    border-radius: 1em/1em;
+    margin-bottom: 30px;
+}
 .textocontacto{
     color: whitesmoke;
     font-weight: bold;
@@ -204,7 +212,7 @@ body {
     margin: auto;
 }
 .textocoment {
-    color: red !important;
+    color: black !important;
     font-size: 15px !important;
 }
 .registro00 {
