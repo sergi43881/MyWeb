@@ -11,9 +11,11 @@ window.onload = function() {
 
 // Inicializa formulario y oculta pantalla login
 function esborra_blog() {
-    inierr();
     inierr_blog();
     document.getElementById("blogform").reset();        // inicializa formulario texto
+    if (texto_borrar != "") {
+        borra_registro();
+    }
 }
 
 // Añade comentario al contenedor
@@ -83,4 +85,27 @@ function carga_blog() {
             }
         }
     });
+}
+
+function borra_registro() {
+    let p_borra = texto_borrar + "";
+    var p_user = localStorage.getItem("usuario");             // recupera usuario del area LocalStorage
+    $.ajax({
+        type: "POST",
+        data: {b_user: p_user, b_texte: p_borra},
+        url: '/php/borrablog.php',
+        success: function(data) {
+            if (data.status == "ok") {
+                carga_blog();
+            }
+        }
+    });
+}
+
+let texto_borrar = "";
+function texto() {
+    texto_borrar = "";
+    if (window.getSelection) {
+        texto_borrar = window.getSelection();
+    }
 }
