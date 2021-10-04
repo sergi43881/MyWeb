@@ -70,10 +70,11 @@ function carga_blog() {
             if (data.status == "ok") {
                 let datos = data.comentarios;
                 let times = data.tiempo;
+                let codid = data.identificador;
                 $("#comentarios").text("");                     // inicializa historial texto
                 for (let x = 0; x < datos.length; x++) {
                     $("#comentarios").append('<input type="button" id="bot_borra"'
-                                        + 'onclick="borra_registro(\''+times[x]+'\')" value="Borrar" style="color: blue; '
+                                        + 'onclick="borra_registro_id(\''+codid[x]+'\')" value="Borrar" style="color: blue; '
                                         + 'font-size: 12px"/>'
                                         +  " " + times[x] + " " + datos[x]);  
                 }
@@ -83,6 +84,20 @@ function carga_blog() {
                 document.getElementById("blogform").reset();    // inicializa formulario texto
             } else {
                 alert("PETADA");
+            }
+        }
+    });
+}
+
+function borra_registro_id(p_id) {
+    var p_user = localStorage.getItem("usuario");             // recupera usuario del area LocalStorage
+    $.ajax({
+        type: "POST",
+        data: {b_user: p_user, b_id: p_id},
+        url: '/php/borrablog_id.php',
+        success: function(data) {
+            if (data.status == "ok") {
+                carga_blog();
             }
         }
     });

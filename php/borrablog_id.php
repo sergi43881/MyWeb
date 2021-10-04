@@ -3,6 +3,7 @@
 header("content-type: application/json");
 
 $r_user = $_POST['b_user'];
+$r_id = $_POST['b_id'];
 
 $conexion=mysqli_connect("localhost" ,"root" ,"mimamamemima", "myweb");
 if (!$conexion) {
@@ -16,19 +17,10 @@ $resultado= mysqli_query($conexion, $consulta);
 $fila1 = mysqli_fetch_assoc($resultado);
 $r_user = $fila1['id'];
 
-$consulta = "SELECT * FROM posts WHERE user_cod = '$r_user' ORDER BY user_cod, id DESC";
- 
-$resultado= mysqli_query($conexion, $consulta);
-for($x = 0 ; $x < mysqli_num_rows($resultado) ; $x++){
-    $fila1 = mysqli_fetch_assoc($resultado); 
-    if ($fila1['log_erase'] == 0) {   
-        $r_comen[] = $fila1['post_content'];
-        $r_ahora[] = $fila1['creation_date'];
-        $r_id[] = $fila1['id'];
-    }
-
+$borra = "UPDATE posts SET log_erase = '1' WHERE user_cod = '$r_user' AND id = '$r_id'";
+if (mysqli_query($conexion, $borra)) {
+    echo json_encode(["status" => "ok", "message" => "comentario borrado"]);
 }
-echo json_encode(["status" => "ok", "comentarios" => $r_comen, "tiempo" => $r_ahora, "identificador" => $r_id]);
 
 mysqli_close($conexion);
 
